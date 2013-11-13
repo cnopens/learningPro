@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="">
+    <select id="getTests" resultMap="baseResultMap" parameterType="map">
+        SELECT id, name, type, create_date, update_date
+        FROM test
+        WHERE 1=1
+        <if test="type!=null and type!=''">
+            AND type = #{type}
+        </if>
+        limit #{startIndex},#{pageSize}
+    </select>
+
+    <select id="getTestsCount" resultType="java.lang.Integer" parameterType="map">
+        SELECT COUNT(1)
+        FROM test
+        WHERE 1=1
+        <if test="type!=null and type!=''">
+            AND type = #{type}
+        </if>
+    </select>
+</mapper>
