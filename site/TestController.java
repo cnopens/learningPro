@@ -1,7 +1,6 @@
-package com.test.controller;
+package com.learningpro.web;
 
-import com.test.model.Test;
-import com.test.service.TestService;
+import com.learningpro.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +20,7 @@ import java.util.Map;
  * Comment:-
  */
 @Controller
-public class TestController extends BaseController{
+public class TestController{
 
     @Autowired
     private TestService testService;
@@ -48,7 +47,7 @@ public class TestController extends BaseController{
 
     @RequestMapping("/test/add")
     public String testAdd(@RequestParam String type,Model model) {
-        Test test = new Test();
+        test.model.Test test = new test.model.Test();
         test.setType(type);
         this.testService.addTest(test);
         return this.test(model,null,null,null);

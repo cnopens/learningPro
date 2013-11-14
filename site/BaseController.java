@@ -1,4 +1,4 @@
-package com.test.controller;
+package com.learningpro.web;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,8 +9,8 @@ package com.test.controller;
  * Comment:-
  */
 
-import com.test.utils.Pager;
-import com.test.utils.TestConstance;
+import com.learningpro.utils.Pager;
+import com.learningpro.utils.TestConstance;
 import org.springframework.ui.Model;
 
 import java.util.Iterator;
