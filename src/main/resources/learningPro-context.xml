@@ -79,7 +79,8 @@
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.learningpro.dao" />
+        <!--<property name="basePackage" value="com.learningpro.dao" />-->
+        <property name="annotationClass" value="com.learningpro.dao.MybatisBaseMapper"/>
     </bean>
 
     <!--如果使用存在服务层，则进行扫描，否则如果直接使用mapper-->

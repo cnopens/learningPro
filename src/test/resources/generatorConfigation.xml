@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--<properties resource="test.properties"/>-->
+    <!-- 数据库驱动包，使用绝对路径 -->
+    <classPathEntry location="c:/mysql-connector-java-5.1.22-bin.jar" />
+
+    <!-- 环境配置 **************************************************
+        id="自定义的配置名称"
+        targetRuntime="MyBatis版本" -->
+    <context id="MySqlTables" targetRuntime="MyBatis3" >
+
+        <!-- 数据库  ===============================================
+            driverClass="驱动"
+            connectionURL="数据库url"
+            userId="用户"
+            password="密码" -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/db_mybatis"
+                userId="root"
+                password="root">
+        </jdbcConnection>
+
+        <!-- Java数据类型分离器，数据类型转换 =====================
+            property 属性
+                name="强迫双精度"
+                value="不" -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- Java模型生成器 =======================================
+            targetPackage="生成文件的目标路径"
+            targetProject="已存在的项目包"
+                enableSubPackages-可以省略对应约束名,true-是的，可以省略tb_generator
+                trimString-验证字符串，true-是的 -->
+        <javaModelGenerator
+                targetPackage="cn.cvu.test.model"
+                targetProject="src">
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- sql映射文件生成器 =======================================
+            targetPackage="生成文件的目标路径"
+            targetProject="已存在的项目包"
+                enableSubPackages-可以省略对应约束名,true-是的，可以省略tb_generator -->
+        <sqlMapGenerator
+                targetPackage="cn.cvu.test.xml"
+                targetProject="src">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- java委托对象DAO生成器，接口 =============================
+            type=""
+            targetPackage="生成文件的目标路径"
+            targetProject="已存在的项目包"
+                enableSubPackages-可以省略对应约束名,true-是的，可以省略tb_generator -->
+        <javaClientGenerator
+                type="XMLMAPPER"
+                targetPackage="cn.cvu.test.dao"
+                targetProject="src">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- 表单，已存在，根据此表生成其它文件 =======================
+            tableName="已有的表单名称"
+            domainObjetctName="对应生成的文件名前缀" -->
+        <table tableName="tb_generator" domainObjectName="Eminem">
+            <!-- useActualColumnNames-使用真实列名 ,
+                 true-嗯。如果false，则由columnOverride节点控制  -->
+            <property name="useActualColumnNames" value="true" />
+
+            <!-- 标识列
+                column="列名" sqlStatement="某种数据库语言" identity="作为主键" -->
+            <generatedKey column="id" sqlStatement="MySql" identity="true" />
+
+            <!-- 覆盖项，当property name="useActualColumnNames" value="true"时。
+                column="被覆盖值的列名" property="用来覆盖的对应的java类的属性" -->
+            <columnOverride column="name" property="generName" />
+
+        </table>
+
+    </context>
+
+</generatorConfiguration>
+
