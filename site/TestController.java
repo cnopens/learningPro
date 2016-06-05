@@ -79,4 +79,8 @@ public class TestController{
         return this.test(model, null, pageNum, pageNum);
     }
 
+    public void test(){
+        
+    }
+
 }

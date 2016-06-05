@@ -1,5 +1,8 @@
 package test;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Description:test
  * Test.java Created on 2015/7/1615:12
@@ -29,7 +32,17 @@ public class Test {
         }
     }
 
-    public static void main(String[] args) {
-        System.out.println(Color.RED.toString());
+
+    public static  void main(String[] args) {
+//        System.out.println(Color.RED.toString());
+        String regStr = "44";
+        Pattern p = Pattern.compile(regStr);
+        Matcher m = p.matcher("Hello44ddddssss");
+        System.out.println(">>>>>>>>>"+m.find()+" ");
+
+//        if(m.find()){
+//            System.out.println(" found it!");
+//        }
+
     }
 }
